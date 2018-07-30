@@ -4,20 +4,19 @@
     components: { Card },
     data() {
       return {
-        size: 'sm',
+        size: 200,
       }
     },
-    mounted() {
-      setTimeout(() => {
-        this.size = 'md';
-      }, 2000)
-    }
   }
 </script>
 
 <template>
   <div>
-    <Card code="0S" :size="size" />
+    <Card code="0S" :height="size" :x="120" :y="110" :rotate="-5" />
+    <Card code="4D" :height="size" :x="160" :y="106" :rotate="5"  />
+    <Card code="KS" :height="size" :x="190" :y="114" :rotate="-4" />
+    <Card code="AC" :height="size" :x="250" :y="104" :rotate="2
+" />
   </div>
 </template>
 
