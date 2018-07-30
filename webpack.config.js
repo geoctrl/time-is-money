@@ -27,7 +27,7 @@ config.module = {
       use: ['vue-style-loader', 'css-loader', {
         loader: 'sass-loader',
         options: {
-          data: `@import "~/${path.resolve(__dirname, 'src/styles/main.scss')}";`,
+          data: `@import "~/${path.resolve(__dirname, 'src/styles/variables.scss')}";`,
         },
       }],
     }

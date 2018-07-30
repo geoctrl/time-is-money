@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store/store';
 import App from './app.vue';
+import './styles/main.scss';
 
 Vue.use(Vuex);
 

@@ -1,24 +1,16 @@
 <script>
-  import Navigation from './components/navigation.vue';
-  import GameView from './components/game-view.vue';
-  import Tools from './components/tools.vue';
+  import Solitaire from './solitaire/solitaire.vue';
 
   export default {
     components: {
-      Navigation,
-      GameView,
-      Tools,
+      Solitaire,
     },
   }
 </script>
 
 <template>
   <div class="app">
-    <div class="app__view">
-      <Navigation />
-      <GameView />
-    </div>
-    <Tools />
+    <Solitaire />
   </div>
 </template>
 
@@ -32,16 +24,5 @@
     bottom: 0;
     overflow: hidden;
 
-  }
-
-  .app__view {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .game-view {
-    flex-grow: 1;
   }
 </style>
