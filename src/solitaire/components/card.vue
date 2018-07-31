@@ -4,7 +4,11 @@
   export default {
     props: {
       code: String,
-      height: Number,
+      height: {
+        type: Number,
+        default: 200,
+      },
+      flip: Boolean,
       lift: Boolean,
       x: { type: Number, default: 0 },
       y: { type: Number, default: 0 },
@@ -12,7 +16,6 @@
     },
     computed: {
       cardImgUrl() {
-        console.log(this.x);
         return cardImgUrl(this.code);
       },
       computedWidth() {
@@ -39,19 +42,31 @@
 </script>
 
 <template>
-  <div class="card-contain" :style="{
+  <div class="card-translate" :style="{
     width: `${computedWidth}px`,
     height: `${computedHeight}px`,
-    borderRadius: `${borderRadius}px`,
-    transform: `scale(${scale}) rotate(${rotate}deg) translateX(${x}px) translateY(${y}px)`,
+    transform: `translateX(${x}px) translateY(${y}px)`,
     zIndex: lift ? 1 : 0,
-    boxShadow: boxShadow,
   }">
-    <div class="card" :style="{
-      backgroundImage: `url('${cardImgUrl}')`,
+    <div class="card-contain" :style="{
       width: `${computedWidth}px`,
       height: `${computedHeight}px`,
-    }"></div>
+      borderRadius: `${borderRadius}px`,
+      transform: `scale(${scale}) rotate(${rotate}deg) rotateY(${flip ? 180 : 0}deg)`,
+      boxShadow: boxShadow,
+    }">
+      <div class="card" :style="{
+        backgroundImage: `url('${cardImgUrl}')`,
+        borderRadius: `${borderRadius}px`,
+        width: `${computedWidth}px`,
+        height: `${computedHeight}px`,
+      }"></div>
+      <div class="card-back" :style="{
+        borderRadius: `${borderRadius}px`,
+        width: `${computedWidth}px`,
+        height: `${computedHeight}px`,
+      }"></div>
+    </div>
   </div>
 </template>
 
@@ -60,17 +75,45 @@
     background-color: #fff;
     width: 0;
     height: 0;
+    transform: scale(1);
     transition: width 200ms ease, height 200ms ease;
+    perspective: 600px;
+    position: absolute;
+  }
+  .card-back {
+    background-color: #fff;
+    width: 0;
+    height: 0;
+    position: absolute;
+    transform: rotateY(-180deg);
+    transition: width 200ms ease, height 200ms ease;
+    backface-visibility: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      background-color: #96ff7c;
+    }
+  }
+  .card-translate {
+    transform: translateX(0) translateY(0);
+    transition: 200ms ease;
+    z-index: 0;
+    position: absolute;
+    perspective: 400px;
   }
   .card-contain {
     box-shadow: 0 0 0 rgba(#000, 0);
     width: 286px;
     height: 400px;
-    overflow: hidden;
-    position: fixed;
-    z-index: 0;
+    position: absolute;
     transform-origin: center;
     transform: scale(1);
-    transition: width 200ms ease, height 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    transform-style: preserve-3d;
+    transition: width 200ms ease, height 200ms ease, transform 1000ms ease, box-shadow 200ms ease;
   }
 </style>
