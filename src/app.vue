@@ -1,16 +1,16 @@
 <script>
-  import Solitaire from './solitaire/solitaire.vue';
+  import Launch from './components/launch.vue';
 
   export default {
     components: {
-      Solitaire,
+      Launch,
     },
   }
 </script>
 
 <template>
   <div class="app">
-    <Solitaire />
+    <Launch />
   </div>
 </template>
 

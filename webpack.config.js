@@ -6,7 +6,7 @@ config.mode = 'development';
 config.entry = path.resolve(__dirname, 'src/index.js');
 config.output = {
   filename: 'bundle.js',
-  path: path.resolve(__dirname, 'src/index.js'),
+  path: path.resolve(__dirname, 'src/'),
 };
 
 config.module = {
@@ -30,12 +30,16 @@ config.module = {
           data: `@import "~/${path.resolve(__dirname, 'src/styles/variables.scss')}";`,
         },
       }],
-    }
+    },
+    {
+      test: /\.svg$/,
+      exclude: /node_modules/,
+      use: 'raw-loader',
+    },
   ],
 };
 
 config.plugins = [];
 config.plugins.push(new VueLoaderPlugin());
-
 
 module.exports = config;

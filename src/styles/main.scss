@@ -1,12 +1,22 @@
 @import "variables";
 @import "utils";
 
-
 body {
-  background-color: #e3e3e3;
-  font-family: 'Lato', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  font-size: 16px;
+  background-color: #fff;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
   font-weight: 400;
   line-height: 1.4;
   color: $color-grey;
+}
+
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

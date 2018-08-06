@@ -7,7 +7,7 @@ import './styles/main.scss';
 Vue.use(Vuex);
 
 new Vue({
-  el: '#app',
+  el: '.app',
   store: new Vuex.Store(store),
   components: { App },
   render(h) {
