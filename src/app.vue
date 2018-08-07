@@ -1,16 +1,13 @@
 <script>
-  import Launch from './components/launch.vue';
-
   export default {
     components: {
-      Launch,
     },
   }
 </script>
 
 <template>
   <div class="app">
-    <Launch />
+    sup
   </div>
 </template>
 
@@ -23,6 +20,5 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
-
   }
 </style>

@@ -1,10 +1,10 @@
-import * as scenes from './scenes';
+import * as timer from './timer';
 
 export default {
   state: {
-    ...scenes.state,
+    ...timer.state,
   },
   mutations: {
-    ...scenes.mutations,
+    ...timer.mutations,
   },
 };
