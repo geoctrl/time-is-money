@@ -1,13 +1,17 @@
 <script>
+  import Chat from './components/chat.vue';
   export default {
     components: {
+      Chat,
     },
   }
 </script>
 
 <template>
   <div class="app">
-    sup
+    <Chat>
+      Helloy!
+    </Chat>
   </div>
 </template>
 
@@ -20,5 +24,6 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
+    background: linear-gradient(135deg, #53bdf9 0%,#00a0f7 100%);
   }
 </style>
