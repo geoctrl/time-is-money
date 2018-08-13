@@ -10,15 +10,15 @@ body {
   color: $color-grey;
 }
 
-.app {
+#app {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #53bdf9 0%,#00a0f7 100%);
 }
 
 h1, h2, h3, h4, h5, h6 {
