@@ -2,21 +2,24 @@
   import Chat from '../components/chat.vue';
   import Face from '../components/face.vue';
   import { timedResponses } from '../brady/timed-responses';
+  import { Meeting } from '../core/meeting';
 
   export default {
     components: { Chat, Face },
     mounted() {
+      Meeting.start();
       timedResponses.getObserver().subscribe(this.update);
     },
     data() {
       return {
         msg: '',
-        bradyFace: 'happy',
+        face: 'happy',
       };
     },
     methods: {
       update(data) {
         this.msg = data.msg;
+        this.face = data.face;
       },
     },
   }
@@ -25,7 +28,7 @@
 <template>
   <div class="timer">
     <div class="header">
-      <!--<Face />-->
+      <Face :face="face" />
       <Chat pointer="left" :text="msg" />
     </div>
   </div>
@@ -48,8 +51,10 @@
     display: flex;
     background-color: #059adb;
     padding: 20px;
+    box-shadow: 0 1px .5px rgba(#000, .4);
     @include media(phone) {
       border-radius: 5px;
+      border: none;
     }
     .chat {
       flex-grow: 1;

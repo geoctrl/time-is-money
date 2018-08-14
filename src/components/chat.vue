@@ -17,9 +17,9 @@
 </script>
 
 <template>
-  <div class="chat" :class="`${big ? 'chat--big' : ''} chat--${pointer}`">
+  <div class="chat" :class="`${big ? 'chat--big' : ''} ${!text ? 'chat--hide' : ''} chat--${pointer}`">
     <div class="chat__content">
-      {{text || '...'}}
+      {{text || '&nbsp;'}}
     </div>
     <div class="chat__pointer" />
     <div class="chat__pointer chat__pointer--shadow" />
@@ -43,6 +43,10 @@
       background-color: #fff;
       box-shadow: $base-box-shadow;
       z-index: 1;
+    }
+
+    &.chat--hide {
+      visibility: hidden;
     }
 
     &.chat--big {

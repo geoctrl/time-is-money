@@ -12,8 +12,7 @@ class TimedResponses {
     this.money = 4.5
     this.eventStream = new Subject();
     setTimeout(() => {
-      console.log(this.api.small[0])
-      this.eventStream.next(this.api.small[1][Math.floor(Math.random()*(3-0+1)+0)]);
+      this.eventStream.next(this.api.small[1][0]);
     }, 2000)
   }
 
@@ -30,10 +29,10 @@ class TimedResponses {
         { face: 'laugh-small', msg: `jk`, duration: 4 },
       ],
       [
-        { face: '', msg: `I'm bored...`, duration: 7 },
-        { face: '', msg: `Are you done yet?`, duration: 7 },
-        { face: '', msg: `How about now?`, duration: 7 },
-        { face: '', msg: `You guys are so.....slow...`, duration: 5 },
+        { face: 'confused', msg: `I'm bored...`, duration: 7 },
+        { face: 'surprised', msg: `Are you done yet?`, duration: 7 },
+        { face: 'surprised-sad', msg: `How about now?`, duration: 7 },
+        { face: 'sad', msg: `You guys are so.....slow...`, duration: 5 },
       ],
       [
         { face: '', msg: ``, duration: 7 },
