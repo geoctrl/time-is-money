@@ -1,12 +1,14 @@
-const path = require('path');
+const { resolve } = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const convert = require('koa-connect');
+const history = require('connect-history-api-fallback');
 
 const config = {};
 config.mode = 'development';
-config.entry = path.resolve(__dirname, 'src/index.js');
+config.entry = resolve(__dirname, 'src/index.js');
 config.output = {
   filename: 'bundle.js',
-  path: path.resolve(__dirname, 'src/'),
+  path: resolve(__dirname, 'src/'),
 };
 
 config.module = {
@@ -27,7 +29,8 @@ config.module = {
       use: ['vue-style-loader', 'css-loader', {
         loader: 'sass-loader',
         options: {
-          data: `@import "~/${path.resolve(__dirname, 'src/styles/variables.scss')}";`,
+          data: `@import "~/${resolve(__dirname, 'src/styles/variables.scss')}";
+            @import "~/${resolve(__dirname, 'src/styles/utils.scss')}";`,
         },
       }],
     },
@@ -41,5 +44,13 @@ config.module = {
 
 config.plugins = [];
 config.plugins.push(new VueLoaderPlugin());
+
+config.serve = {
+  port: 8080,
+  content: [resolve(__dirname, 'src')],
+  add: (app, middleware, options) => {
+    app.use(convert(history({})));
+  },
+};
 
 module.exports = config;

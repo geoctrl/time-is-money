@@ -1,0 +1,11 @@
+@mixin media($type) {
+  @if ($type == phone) {
+    @media (min-width: $media-phone) { @content; }
+  }
+  @else if ($type == tablet) {
+    @media (min-width: $media-tablet) { @content; }
+  }
+  @else if ($type == desktop) {
+    @media (min-width: $media-desktop) { @content; }
+  }
+}

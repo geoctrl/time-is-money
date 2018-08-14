@@ -2,17 +2,27 @@
   export default {
     props: {
       big: Boolean,
+      pointer: {
+        type: String,
+        default: 'right',
+      },
+      text: {
+        type: String,
+      },
+    },
+    mounted() {
+      console.log(this);
     }
   }
 </script>
 
 <template>
-  <div class="chat" :class="big ? 'chat--big' : ''">
+  <div class="chat" :class="`${big ? 'chat--big' : ''} chat--${pointer}`">
     <div class="chat__content">
-      <slot />
+      {{text || '...'}}
     </div>
     <div class="chat__pointer" />
-    <div class="chat__pointer chat__pointer--shadow"></div>
+    <div class="chat__pointer chat__pointer--shadow" />
   </div>
 </template>
 
@@ -20,6 +30,8 @@
   .chat {
     padding: 12px 16px 10px 14px;
     position: relative;
+    display: flex;
+    align-items: center;
     &::after {
       content: '';
       position: absolute;
@@ -43,6 +55,51 @@
         font-size: 34px;
       }
     }
+
+    .chat__pointer {
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      border-radius: 6px;
+      transform: scaleY(.7);
+      z-index: 2;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        border-radius: 6px;
+        transform: rotate(45deg);
+        background-color: #fff;
+      }
+
+      &.chat__pointer--shadow {
+        z-index: 1;
+        &::after {
+          box-shadow: 2.5px 2px 3.3px rgba(#000, .25);
+        }
+      }
+    }
+
+    &.chat--right {
+      margin-right: 20px;
+      .chat__pointer {
+        top: 50%;
+        right: -7px;
+        margin-top: -15px;
+      }
+    }
+
+    &.chat--left {
+      margin-left: 20px;
+      .chat__pointer {
+        margin-right: 10px;
+        top: 50%;
+        left: -7px;
+        margin-top: -15px;
+      }
+    }
   }
 
   .chat__content {
@@ -50,32 +107,4 @@
     z-index: 3;
   }
 
-  .chat__pointer {
-    position: absolute;
-    top: 50%;
-    right: -7px;
-    height: 30px;
-    width: 30px;
-    margin-top: -15px;
-    border-radius: 6px;
-    transform: scaleY(.7);
-    z-index: 2;
-
-    &::after {
-      content: '';
-      position: absolute;
-      height: 30px;
-      width: 30px;
-      transform: rotate(45deg);
-      border-radius: 6px;
-      background-color: #fff;
-    }
-
-    &.chat__pointer--shadow {
-      z-index: 1;
-      &::after {
-        box-shadow: 2.5px 2px 3.3px rgba(#000, .25);
-      }
-    }
-  }
 </style>

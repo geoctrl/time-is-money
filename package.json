@@ -6,7 +6,7 @@
   "author": "Tony Lefler <tony.lefler@canopytax.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-serve --config ./webpack.config.js --content ./src --port 8080",
+    "start": "webpack-serve ./webpack.config.js",
     "test": "jest ./src"
   },
   "devDependencies": {
@@ -16,8 +16,10 @@
     "@babel/preset-env": "^7.0.0-beta.55",
     "autoprefixer": "^9.0.1",
     "babel-loader": "^8.0.0-beta",
+    "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^1.0.0",
     "fast-sass-loader": "^1.4.5",
+    "koa-connect": "^2.0.1",
     "node-sass": "^4.9.2",
     "raw-loader": "^0.5.1",
     "sass-loader": "^7.0.3",
@@ -31,6 +33,7 @@
   "dependencies": {
     "lodash-es": "^4.17.10",
     "pixi.js": "^4.8.1",
+    "rxjs": "^6.2.2",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
