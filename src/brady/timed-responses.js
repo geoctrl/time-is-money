@@ -46,7 +46,7 @@ class TimedResponses {
     large: [
       [
         { face: '', msg: `Holy crap, you've spent over ${usd(this.money)}...`, duration: 7 },
-        { face: '', msg: `You're mothers would be disappointed.`, duration: 7 },
+        { face: '', msg: `Your mother would be disappointed.`, duration: 7 },
       ],
       [
         { face: '', msg: `You guys must really like meetings.`, duration: 7 },

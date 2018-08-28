@@ -29,7 +29,7 @@
   <div class="timer">
     <div class="header">
       <Face :face="face" />
-      <Chat pointer="left" :text="msg" />
+      <Chat pointer="left" :msg="msg" />
     </div>
   </div>
 </template>
@@ -49,15 +49,11 @@
 
   .header {
     display: flex;
-    background-color: #059adb;
+    align-items: center;
     padding: 20px;
-    box-shadow: 0 1px .5px rgba(#000, .4);
     @include media(phone) {
       border-radius: 5px;
       border: none;
-    }
-    .chat {
-      flex-grow: 1;
     }
   }
 

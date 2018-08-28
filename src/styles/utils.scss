@@ -9,3 +9,7 @@
     @media (min-width: $media-desktop) { @content; }
   }
 }
+
+.text-center {
+  text-align: center;
+}

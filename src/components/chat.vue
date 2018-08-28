@@ -6,20 +6,24 @@
         type: String,
         default: 'right',
       },
-      text: {
+      title: {
         type: String,
       },
+      msg: {
+        type: String,
+      },
+      customClass: {
+        type: String,
+      }
     },
-    mounted() {
-      console.log(this);
-    }
   }
 </script>
 
 <template>
-  <div class="chat" :class="`${big ? 'chat--big' : ''} ${!text ? 'chat--hide' : ''} chat--${pointer}`">
+  <div class="chat" :class="`${big ? 'chat--big' : ''} ${!msg ? 'chat--hide' : ''} chat--${!customClass && pointer} ${customClass}`">
     <div class="chat__content">
-      {{text || '&nbsp;'}}
+      <div v-if="title" class="title">{{title}}</div>
+      {{msg || '&nbsp;'}}
     </div>
     <div class="chat__pointer" />
     <div class="chat__pointer chat__pointer--shadow" />
@@ -102,6 +106,21 @@
         top: 50%;
         left: -7px;
         margin-top: -15px;
+      }
+    }
+
+    &.chat--down {
+      margin-bottom: 20px;
+      .chat__pointer {
+        margin-bottom: 10px;
+        left: 50%;
+        bottom: -18px;
+        margin-left: -15px;
+        transform: scaleY(1) scaleX(.8);
+
+        &::after {
+          transform: rotate(135deg);
+        }
       }
     }
   }
