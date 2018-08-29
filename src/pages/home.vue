@@ -61,7 +61,6 @@
         tag="button"
         to="/timer"
         class="btn btn--primary"
-        :click="changeFace()"
       >
         Track a Meeting
       </router-link>
@@ -88,7 +87,8 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 30px;
+    max-width: 520px;
+    margin: 0 auto 20px auto;
 
     @include media(phone) {
       flex-direction: row;

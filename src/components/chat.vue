@@ -36,6 +36,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    flex-grow: 1;
     &::after {
       content: '';
       position: absolute;
@@ -43,7 +44,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 8px;
+      border-radius: 18px;
       background-color: #fff;
       box-shadow: $base-box-shadow;
       z-index: 1;
@@ -104,7 +105,7 @@
       .chat__pointer {
         margin-right: 10px;
         top: 50%;
-        left: -7px;
+        left: -5px;
         margin-top: -15px;
       }
     }
